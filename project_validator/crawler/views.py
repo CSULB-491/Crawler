@@ -9,8 +9,10 @@ from .models import Article
 # Create your views here.
 class Crawler:
     banned_sites = []
-    possible_article_attributes = ['title', 'author', 'author_detail', 'publisher', 'publisher_detail',
-                                   'contributors', 'tags', 'link', 'published', 'description', 'content', 'summary']
+    # possible_article_attributes = ['title', 'author', 'author_detail', 'publisher', 'publisher_detail',
+    #                                'contributors', 'tags', 'link', 'published', 'description', 'content', 'summary']
+    possible_article_attributes = ['title', 'author', 'publisher',
+                                   'contributors', 'tags', 'link', 'published', 'content']
     html_parser = ArticleHTMLParser()
     rss_feeds = ['http://feeds.bbci.co.uk/news/world/rss.xml',
                  'http://feeds.reuters.com/Reuters/worldNews', 'http://feeds.washingtonpost.com/rss/rss_blogpost',
@@ -38,9 +40,9 @@ class Crawler:
                  'https://www.npr.org/rss/rss.php?id=1008', 'https://api.quantamagazine.org/feed/']
 
     def __init__(self):
-        # self.parse_rss()
-        with open('crawler/static/crawler/test2.html', encoding="utf8") as html_file:
-            self.html_parser.get_content_from_html(html_file)
+        self.parse_rss()
+        # with open('crawler/static/crawler/test2.html', encoding="utf8") as html_file:
+        #     self.html_parser.get_content_from_html(html_file)
 
     @classmethod
     def gather_article_attributes(cls, article):
@@ -54,7 +56,7 @@ class Crawler:
     @classmethod
     def parse_rss(cls):
         # @TODO need to create a pre-parse hash that will identify if article already has been processed
-        articles = feedparser.parse(cls.rss_feeds[2])
+        articles = feedparser.parse(cls.rss_feeds[3])
         # articles = feedparser.parse('https://api.quantamagazine.org/feed/')
 
         for article in articles.entries:

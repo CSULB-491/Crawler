@@ -5,18 +5,25 @@ import urllib.request
 class ArticleHTMLParser():
     content = ""
 
-    def get_content_from_url(self, url: str) -> str:
-        unfiltered_html = self.get_html_from_site(url)
+    async def get_content_from_url(self, url):
+        print("getting content from ", url)
+        html = self.get_html_from_site(url)
+        parser = BeautifulSoup(html, "html.parser")
+        article_contents = [paragraph.get_text() for paragraph in parser.find_all("p", text=True)]
+        for paragraph in article_contents:
+            self.content += paragraph
         return self.content
 
-    def get_content_from_html(self, html):
+    async def get_content_from_html(self, html):
         # @TODO refine the paragraphs parsed from html
         # @TODO fix ascci/unicode conversion errors
         parser = BeautifulSoup(html, "html.parser")
         article_contents = [paragraph.get_text() for paragraph in parser.find_all("p", text=True)]
-        for items in article_contents:
-            print(ascii(items))
-        print("here")
+        # for items in article_contents:
+        #     print(ascii(items))
+            # print(items.encode("utf-8"))
+        for paragraph in article_contents:
+            self.content += paragraph
         return self.content
 
     def get_html_from_site(self, url):
@@ -31,5 +38,3 @@ class ArticleHTMLParser():
             print('We failed to reach a server.')
             print('Reason: ', error.reason)
 
-    # def handle_data(self, data):
-    #     self.content += data
