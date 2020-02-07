@@ -2,38 +2,36 @@ from bs4 import BeautifulSoup
 import urllib.request
 
 
-class ArticleHTMLParser():
-    content = ""
+class ArticleHTMLParser:
 
-    async def get_content_from_url(self, url):
-        print("getting content from ", url)
-        html = self.get_html_from_site(url)
+    def get_content_from_url(self, url):
+        # Get html, create parser
+        article_content = ""
+        html = self.pull_html_from_url(url)
         parser = BeautifulSoup(html, "html.parser")
-        article_contents = [paragraph.get_text() for paragraph in parser.find_all("p", text=True)]
-        for paragraph in article_contents:
-            self.content += paragraph
-        return self.content
 
-    async def get_content_from_html(self, html):
-        # @TODO refine the paragraphs parsed from html
-        # @TODO fix ascci/unicode conversion errors
-        parser = BeautifulSoup(html, "html.parser")
-        article_contents = [paragraph.get_text() for paragraph in parser.find_all("p", text=True)]
-        # for items in article_contents:
-        #     print(ascii(items))
-            # print(items.encode("utf-8"))
-        for paragraph in article_contents:
-            self.content += paragraph
-        return self.content
+        # Remove scripts and unwanted content that may be nested in <p>'s
+        for unwanted_content in parser(['style', 'script', 'head', 'title', 'meta', '[document]']):
+            unwanted_content.extract()
 
-    def get_html_from_site(self, url):
+        # Extract all paragraphs and append them to the content
+        paragraphs_of_text = [paragraph.get_text() for paragraph in parser.find_all("p", text=True)]
+        for paragraph in paragraphs_of_text:
+            article_content += paragraph
+        return article_content
+
+    def pull_html_from_url(self, url):
+        # Try to pull HTML from url
         try:
             request = urllib.request.urlopen(url)
             return request.read()
-            # html.unescape()
+
+        # Catch HTTP error
         except urllib.request.HTTPError as error:
             print('The server couldn\'t fulfill the request.')
             print('Error code: ', error.code)
+
+        # Catch URL error
         except urllib.request.URLError as error:
             print('We failed to reach a server.')
             print('Reason: ', error.reason)

@@ -1,4 +1,3 @@
-from django.shortcuts import render
 import feedparser
 from crawler.static.crawler.HTML import ArticleHTMLParser
 from .models import Author
@@ -9,10 +8,8 @@ from .models import Article
 # Create your views here.
 class Crawler:
     banned_sites = []
-    # possible_article_attributes = ['title', 'author', 'author_detail', 'publisher', 'publisher_detail',
-    #                                'contributors', 'tags', 'link', 'published', 'description', 'content', 'summary']
     possible_article_attributes = ['title', 'author', 'publisher',
-                                   'contributors', 'tags', 'link', 'published', 'content']
+                                   'contributors', 'tags', 'link', 'published']
     html_parser = ArticleHTMLParser()
     rss_feeds = ['http://feeds.bbci.co.uk/news/world/rss.xml',
                  'http://feeds.reuters.com/Reuters/worldNews', 'http://feeds.washingtonpost.com/rss/rss_blogpost',
@@ -41,7 +38,7 @@ class Crawler:
 
     def __init__(self):
         self.parse_rss()
-        # with open('crawler/static/crawler/test2.html', encoding="utf8") as html_file:
+        # with open('crawler/static/crawler/test.html', encoding="utf8") as html_file:
         #     self.html_parser.get_content_from_html(html_file)
 
     @classmethod
@@ -55,38 +52,29 @@ class Crawler:
 
     @classmethod
     def parse_rss(cls):
-        # @TODO need to create a pre-parse hash that will identify if article already has been processed
-        articles = feedparser.parse(cls.rss_feeds[3])
-        # articles = feedparser.parse('https://api.quantamagazine.org/feed/')
+        rss_source = feedparser.parse(cls.rss_feeds[2])
 
-        for article in articles.entries:
+        for article in rss_source.entries:
             article_attributes = cls.gather_article_attributes(article)
+            article_attributes["content"] = cls.html_parser.get_content_from_url(article_attributes["link"])
 
             # can add these in later if so inclined
             # logo = article.feed.logo if article.feed.logo else "No logo"
             # image = article.feed.image if article.feed.image else "No image"
 
-            # parse the link for article content if there is no content in the rss feed
-            if article_attributes["content"] == "null":
-                article_attributes["content"] = cls.html_parser.get_content_from_url(article_attributes["link"])
-
             try:
-                print(article_attributes)
+                print(ascii(article_attributes), "\n")
             except:
                 print("couldn't print an encoded character")
 
-            # @TODO need to follow links to get the full context if context not found
             # @TODO decide what nulls are going to look like, be careful with "null" currently inplace
             # @TODO create a textfile with all the parsed content and then create a db entry
-            # @TODO descriptions and summaries appear to be the same thing
-            # @TODO create a reliable hash to store in the db so articles can be quickly checked for existence
-            # @TODO author details seem useless?
-            # @TODO need to multithread/whatever python has pulling the html and all processes in general
-
-    @classmethod
-    def crawl_the_web(cls, time_interval):
-        print("crawler is crawling")
-        cls.parse_rss()
+            # @TODO create a reliable hash to store in the db so rss_source can be quickly checked for existence
+            # @TODO need to make crawling asynchronous
+            # @TODO refine the paragraphs parsed from html: include <h>?, remove leading <p>, remove <href>
+            # @TODO remove tags with :None
+            # @TODO fix ascci/unicode conversion errors for " and ', &#39, \u201d\u201c\u2019\u2017\u2014\u2018;
+            # @TODO handle 404 errors gracefully in html crawler + add timeouts
 
     @classmethod
     def create_author(cls, first_name, last_name):
