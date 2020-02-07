@@ -1,8 +1,9 @@
+import unicodedata
 from bs4 import BeautifulSoup
 import urllib.request
 
 
-class ArticleHTMLParser:
+class HTMLParser:
 
     def get_content_from_url(self, url):
         # Get html, create parser
@@ -10,14 +11,17 @@ class ArticleHTMLParser:
         html = self.pull_html_from_url(url)
         parser = BeautifulSoup(html, "html.parser")
 
-        # Remove scripts and unwanted content that may be nested in <p>'s
+        # Remove scripts and unwanted html content that may be nested in <p>'s
         for unwanted_content in parser(['style', 'script', 'head', 'title', 'meta', '[document]']):
             unwanted_content.extract()
 
-        # Extract all paragraphs and append them to the content
+        # Extract all paragraphs and append them to the article content
         paragraphs_of_text = [paragraph.get_text() for paragraph in parser.find_all("p", text=True)]
         for paragraph in paragraphs_of_text:
             article_content += paragraph
+
+        # Remove a few pesky unicode holdovers
+        unicodedata.normalize("NFKD", article_content)
         return article_content
 
     def pull_html_from_url(self, url):

@@ -1,5 +1,5 @@
 import feedparser
-from crawler.static.crawler.HTML import ArticleHTMLParser
+from crawler.static.crawler.HTML import HTMLParser
 from .models import Author
 from .models import Publisher
 from .models import Article
@@ -10,7 +10,7 @@ class Crawler:
     banned_sites = []
     possible_article_attributes = ['title', 'author', 'publisher',
                                    'contributors', 'tags', 'link', 'published']
-    html_parser = ArticleHTMLParser()
+    html_parser = HTMLParser()
     rss_feeds = ['http://feeds.bbci.co.uk/news/world/rss.xml',
                  'http://feeds.reuters.com/Reuters/worldNews', 'http://feeds.washingtonpost.com/rss/rss_blogpost',
                  'https://www.yahoo.com/news/rss/world', 'http://rss.cnn.com/rss/edition_world.rss',
@@ -63,17 +63,15 @@ class Crawler:
             # image = article.feed.image if article.feed.image else "No image"
 
             try:
-                print(ascii(article_attributes), "\n")
-            except:
-                print("couldn't print an encoded character")
+                print(article_attributes, "\n")  # If you are printing \u2019 and such run <chcp 65001> in the terminal
+            except Exception as e:
+                print(str(e))
 
             # @TODO decide what nulls are going to look like, be careful with "null" currently inplace
             # @TODO create a textfile with all the parsed content and then create a db entry
             # @TODO create a reliable hash to store in the db so rss_source can be quickly checked for existence
             # @TODO need to make crawling asynchronous
-            # @TODO refine the paragraphs parsed from html: include <h>?, remove leading <p>, remove <href>
             # @TODO remove tags with :None
-            # @TODO fix ascci/unicode conversion errors for " and ', &#39, \u201d\u201c\u2019\u2017\u2014\u2018;
             # @TODO handle 404 errors gracefully in html crawler + add timeouts
 
     @classmethod
