@@ -35,7 +35,10 @@ class Crawler:
 
     # Takes an rss feed and returns a dict containing its attributes(Author, publisher, date...)
     def parse_rss_feed(self, rss_feed: feedparser.FeedParserDict) -> dict:
+        # Ensure content is not taken from the rss feed
         article_content = {"content": "null"}
+
+        # Pull all other relevant feed information
         for attribute in self.rss_attributes:
             if hasattr(rss_feed, attribute):
                 article_content[attribute] = rss_feed[attribute] if rss_feed[attribute] else "null"
