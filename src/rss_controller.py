@@ -1,4 +1,6 @@
 import feedparser
+
+from src.Hashing import Hashing
 from src.html_controller import HTMLParser
 # from textblob import TextBlob
 
@@ -66,7 +68,12 @@ class Crawler:
                 print(article_attributes, "\n")  # If you are printing \u2019 and such run <chcp 65001> in the terminal
             except Exception as e:
                 print(str(e))
-            
+            #Testing hash
+
+            temp_hash = Hashing(article_attributes["link"], "28Feb20", "NewYorkTimes")
+            temp_hash.show()
+
+            #End of Testing hash
 
             # @TODO decide what nulls are going to look like for article attributes, be careful with "null"
             # @TODO pass content to nlp as a string, pass parsed title to nlp as list
