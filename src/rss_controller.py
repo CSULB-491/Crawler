@@ -5,7 +5,7 @@ from src.html_controller import HTMLParser
 
 class Crawler:
     banned_sites = []
-    rss_attributes = ['title', 'author', 'publisher', 'contributors', 'link', 'published', "tokenizedTitle"]
+    rss_attributes = ['title', 'author', 'publisher', 'contributors', 'link', 'published', "tokenizedTitle", ]
     rss_feeds = ['http://feeds.bbci.co.uk/news/world/rss.xml',
                  'http://feeds.reuters.com/Reuters/worldNews', 'http://feeds.washingtonpost.com/rss/rss_blogpost',
                  'https://www.yahoo.com/news/rss/world', 'http://rss.cnn.com/rss/edition_world.rss',
@@ -66,6 +66,7 @@ class Crawler:
                 print(article_attributes, "\n")  # If you are printing \u2019 and such run <chcp 65001> in the terminal
             except Exception as e:
                 print(str(e))
+            
 
             # @TODO decide what nulls are going to look like for article attributes, be careful with "null"
             # @TODO pass content to nlp as a string, pass parsed title to nlp as list
