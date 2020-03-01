@@ -13,7 +13,7 @@ class Publisher(models.Model):
 
 class Author(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
-    file_type = models.CharField(max_length=10)   # will probably delete this file type for author. It should be on article only
+    article_count = models.CharField(max_length=10)   # will probably delete this file type for author. It should be on article only
     author_name = models.CharField(max_length=250)
 
     def __str__(self):
