@@ -7,7 +7,7 @@ from src.html_controller import HTMLParser
 
 class Crawler:
     banned_sites = []
-    rss_attributes = ['title', 'author', 'publisher', 'contributors', 'link', 'published', "tokenizedTitle", ]
+    rss_attributes = ['title', 'author', 'publishers', 'contributors', 'link', 'published', "tokenizedTitle", ]
     rss_feeds = ['http://feeds.bbci.co.uk/news/world/rss.xml',
                  'http://feeds.reuters.com/Reuters/worldNews', 'http://feeds.washingtonpost.com/rss/rss_blogpost',
                  'https://www.yahoo.com/news/rss/world', 'http://rss.cnn.com/rss/edition_world.rss',
@@ -37,7 +37,7 @@ class Crawler:
         self.update_rss_feeds()
         # self.tokenTest()
 
-    # Takes an rss feed and returns a dict containing its attributes(Author, publisher, date...)
+    # Takes an rss feed and returns a dict containing its attributes(Author, publishers, date...)
     def parse_rss_feed(self, rss_feed: feedparser.FeedParserDict) -> dict:
         # Ensure content is not taken from the rss feed
         article_content = {"content": "null"}
@@ -77,7 +77,7 @@ class Crawler:
 
             # @TODO decide what nulls are going to look like for article attributes, be careful with "null"
             # @TODO pass content to nlp as a string, pass parsed title to nlp as list
-            # @TODO Richard - create a reliable hash to store in the db so rss_source can be quickly checked for existence (name, date, publisher)
+            # @TODO Richard - create a reliable hash to store in the db so rss_source can be quickly checked for existence (name, date, publishers)
             # @TODO need to make crawling asynchronous
             # @TODO Tokenize/clean the title
             # @TODO remove tags with :None
