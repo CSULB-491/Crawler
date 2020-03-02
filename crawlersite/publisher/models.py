@@ -1,0 +1,30 @@
+from django.db import models
+
+
+# Every time django creates a publishers, it will create a unique primary key starting from 1, then 2 and so forth
+class Publisher(models.Model):
+    publisher_name = models.CharField(max_length=250)
+    publisher_link = models.CharField(max_length=1000)
+    publisher_logo = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return self.publisher_name + ' - ' + self.publisher_link
+
+
+class Author(models.Model):
+    publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
+    article_count = models.CharField(max_length=10)   # will probably delete this file type for author. It should be on article only
+    author_name = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.author_name
+
+
+# each article is linked to a publishers. So each foreign key will be linked to a primary key
+# what cascade does, or for this in particular, whenever we delete a publishers, any thing that was linked
+# to that particular publishers(primary key) will also delete the articles linked with it(foreignkeys)
+class Article(models.Model):
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    file_type = models.CharField(max_length=10)
+    article_title = models.CharField(max_length=250)
+    article_date = models.CharField(max_length=250)
