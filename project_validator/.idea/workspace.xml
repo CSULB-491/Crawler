@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0da7745-df2a-476c-affc-be6b4cad04b2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawler/static/crawler/HTML.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawler/static/crawler/HTML.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawler/static/crawler/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawler/static/crawler/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawler/static/crawler/test2.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/crawler/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawler/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -141,7 +143,8 @@
       <workItem from="1580941317832" duration="94000" />
       <workItem from="1580943416281" duration="3161000" />
       <workItem from="1581025243271" duration="6637000" />
-      <workItem from="1581049299210" duration="5055000" />
+      <workItem from="1581049299210" duration="8176000" />
+      <workItem from="1581116483736" duration="46000" />
     </task>
     <servers />
   </component>

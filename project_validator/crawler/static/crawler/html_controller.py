@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup
 import urllib.request
 
 
-# Parses html any english text that is part of an article in said markup
+# Provides html retrieval and parsing
 class HTMLParser:
 
-    # Takes in a url(str) to an article and returns a string containing the article's text
     @staticmethod
+    # Takes in a url(str) to an article and returns a string containing the article's text
     def get_content_from_url(url: str) -> str:
         # Get html, create parser
         article_content = ""
@@ -27,8 +27,8 @@ class HTMLParser:
         unicodedata.normalize("NFKD", article_content)
         return article_content
 
-    # Takes in a url(str) and returns its html
     @staticmethod
+    # Takes in a url(str) and returns its html
     def pull_html_from_url(url: str) -> bytes:
         # Try to pull HTML from url
         try:

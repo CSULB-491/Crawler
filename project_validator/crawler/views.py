@@ -1,16 +1,14 @@
 import feedparser
-from crawler.static.crawler.HTML import HTMLParser
-from .models import Author
-from .models import Publisher
-from .models import Article
+from project_validator.crawler.static.crawler.HTML import HTMLParser
+from project_validator.crawler.models import Author
+from project_validator.crawler.models import Publisher
+from project_validator.crawler.models import Article
 
 
 # Create your views here.
 class Crawler:
     banned_sites = []
-    possible_article_attributes = ['title', 'author', 'publisher',
-                                   'contributors', 'tags', 'link', 'published']
-    html_parser = HTMLParser()
+    possible_article_attributes = ['title', 'author', 'publisher', 'contributors', 'tags', 'link', 'published']
     rss_feeds = ['http://feeds.bbci.co.uk/news/world/rss.xml',
                  'http://feeds.reuters.com/Reuters/worldNews', 'http://feeds.washingtonpost.com/rss/rss_blogpost',
                  'https://www.yahoo.com/news/rss/world', 'http://rss.cnn.com/rss/edition_world.rss',
@@ -38,8 +36,6 @@ class Crawler:
 
     def __init__(self):
         self.parse_rss()
-        # with open('crawler/static/crawler/test.html', encoding="utf8") as html_file:
-        #     self.html_parser.get_content_from_html(html_file)
 
     @classmethod
     def gather_article_attributes(cls, article):
@@ -56,7 +52,7 @@ class Crawler:
 
         for article in rss_source.entries:
             article_attributes = cls.gather_article_attributes(article)
-            article_attributes["content"] = cls.html_parser.get_content_from_url(article_attributes["link"])
+            article_attributes["content"] = HTMLParser.get_content_from_url(article_attributes["link"])
 
             # can add these in later if so inclined
             # logo = article.feed.logo if article.feed.logo else "No logo"
@@ -67,12 +63,17 @@ class Crawler:
             except Exception as e:
                 print(str(e))
 
-            # @TODO decide what nulls are going to look like, be careful with "null" currently inplace
+            # @TODO decide what nulls are going to look like for article attributes, be careful with "null"
             # @TODO create a textfile with all the parsed content and then create a db entry
             # @TODO create a reliable hash to store in the db so rss_source can be quickly checked for existence
             # @TODO need to make crawling asynchronous
             # @TODO remove tags with :None
             # @TODO handle 404 errors gracefully in html crawler + add timeouts
+            # @TODO put everything in a loop that won't exceed the nlp's money constraints
+            # @TODO create all the authors and such as parsed
+            # @TODO decide on how to separate authors with same name/ identify those who write for 2+ publishers
+            # @TODO \xa0 still shows up
+            # @TODO Create a manager aspect that handles articles rated by NLP and user interactions with articles?
 
     @classmethod
     def create_author(cls, first_name, last_name):

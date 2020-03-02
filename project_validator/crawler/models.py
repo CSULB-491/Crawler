@@ -1,3 +1,4 @@
+from django.utils.timezone import now
 from django.db import models
 
 
@@ -19,9 +20,11 @@ class Author(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    content = models.TextField(default="")
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
     publisher = models.ForeignKey(Publisher, on_delete=models.SET_NULL, null=True)
+    link = models.TextField(default="")
+    date_published = models.DateTimeField(default=now())
 
     def __str__(self):
         return self.title

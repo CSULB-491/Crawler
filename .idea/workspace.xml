@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91e3ea4e-43c2-4a4c-b05d-3c3dd25679e1" name="Default Changelist" comment="" />
+    <list default="true" id="91e3ea4e-43c2-4a4c-b05d-3c3dd25679e1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/project_validator/crawler/static/crawler/html_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_validator/crawler/static/crawler/rss_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Crawler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Crawler.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_validator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project_validator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_validator/crawler/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_validator/crawler/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_validator/crawler/static/crawler/HTML.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_validator/crawler/static/crawler/HTML.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_validator/crawler/static/crawler/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_validator/crawler/static/crawler/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_validator/crawler/static/crawler/test2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_validator/crawler/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_validator/crawler/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_validator/project_validator/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_validator/project_validator/settings.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -14,7 +34,8 @@
   <component name="ProjectId" id="1XHgOiMusqWg9rjemTqLerLe80O" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_validator" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_validator/manage.py" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -28,6 +49,86 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Python.rss_controller">
+    <configuration name="rss_controller" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Crawler" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project_validator/crawler/static/crawler" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project_validator/crawler/static/crawler/rss_controller.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <module name="Crawler" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ianwa\AppData\Local\Programs\Python\Python38-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="http://127.0.0.1:8000/" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="server" type="Python.DjangoServer" factoryName="Django server">
+      <module name="Crawler" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="project_validator.project_validator.settings" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ianwa\AppData\Local\Programs\Python\Python38-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="http://127.0.0.1:8000/" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Django server.server" />
+      <item itemvalue="Python.rss_controller" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.rss_controller" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -39,6 +140,8 @@
       <option name="presentableId" value="Default" />
       <updated>1580708403674</updated>
       <workItem from="1580708405840" duration="33000" />
+      <workItem from="1581913395522" duration="19666000" />
+      <workItem from="1581988279884" duration="10000" />
     </task>
     <servers />
   </component>
@@ -50,10 +153,16 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Crawler$rss_controller.coverage" NAME="rss_controller Coverage Results" MODIFIED="1581984056206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_validator/crawler/static/crawler" />
+    <SUITE FILE_PATH="coverage/Crawler$views.coverage" NAME="views Coverage Results" MODIFIED="1581914396645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project_validator/crawler" />
   </component>
 </project>
