@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load render_table from django_tables2 %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Latest Articles</title>
+</head>
+<body>
+{#    {{ request.user }}#}
+{#    {% for article in articles %}#}
+{#        <p><b>{{ article.name }}{{ ": " }}</b>{{ article.content }}{{ article.published_date }}</p>#}
+{#    {% endfor %}#}
+    {% render_table object_list 'django_tables2/bootstrap4.html'%}
+</body>
+</html>
