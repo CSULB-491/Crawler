@@ -13,6 +13,7 @@ class Publisher(models.Model):
 
 class Author(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
+    author_image = models.CharField(max_length=1000)
     article_count = models.CharField(max_length=10)   # will probably delete this file type for author. It should be on article only
     author_name = models.CharField(max_length=250)
 
@@ -28,3 +29,6 @@ class Article(models.Model):
     file_type = models.CharField(max_length=10)
     article_title = models.CharField(max_length=250)
     article_date = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.article_title
