@@ -1,9 +1,10 @@
 <img src="{{ publisher.publisher_logo }}">
 
-<h1>{{ publisher.publisher_name  }}</h1>
-<h2>Authors for {{publisher.publisher_name }}</h2>
+<h1> Here {{ publisher.publisher_name }}</h1>
+
 <ul>
-    {% for author in publisher.author_set.all %}
-        <li> {{ author.author_name }} - {{ author.article_count }} </li>
-    {% endfor %}
+     {% for author in publisher.author_set.all %}
+         <li><a href="{% url 'publisher:author_detail' publisher.id author.id %}">{{ author.author_name }}</a></li>
+     {% endfor %}
 </ul>
+

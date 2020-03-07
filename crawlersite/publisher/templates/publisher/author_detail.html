@@ -1,0 +1,10 @@
+{% if all_articles %}
+    <h3>Here are all the Articles:</h3>
+    <ul>
+        {% for article in all_articles %}
+            <li><a href="{% url 'publisher:detail' publisher.id author.id article.id %}">{{ article.article_title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>There aren't any articles at this time</h3>
+{% endif %}
