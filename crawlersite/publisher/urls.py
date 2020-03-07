@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^(?P<publisher_id>[0-9]+)/$', views.detail, name='detail'),
 
     # /publisher/<publisher_id>/<author_id>/
-    url(r'^(?P<publisher_id>[0-9]+)/(?P<author_id>[0-9]+)/$', views.author_detail, name='author_detail'),
+    url(r'^(?P<publisher_id>[0-9]+)/(?P<author_id>[0-9]+)/$', views.author_index, name='author_index'),
 ]

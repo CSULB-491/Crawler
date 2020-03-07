@@ -4,7 +4,6 @@
 
 <ul>
      {% for author in publisher.author_set.all %}
-         <li><a href="{% url 'publisher:author_detail' publisher.id author.id %}">{{ author.author_name }}</a></li>
+         <li><a href="{% url 'publisher:author_index' publisher.id author.id %} ">{{ author.author_name }}</a></li>
      {% endfor %}
 </ul>
-

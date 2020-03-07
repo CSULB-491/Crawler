@@ -1,11 +1,11 @@
 <img src="{{ publisher.publisher_logo }}">
 
 <h1>{{ publisher.publisher_name }}</h1>
-<h2> {{ author.author_name }}</h2>
+<h2>Author - {{ author.author_name }}</h2>
 <h3>Articles for {{author.author_name }}</h3>
 
 <ul>
-    {% for article in author.article.article_set.all %}
+    {% for article in author.article_set.all %}
         <li>{{ article.article_title }} - {{ article.file_type }}</li>
     {% endfor %}
 </ul>
