@@ -1,9 +1,14 @@
-<img src="{{ publisher.publisher_logo }}">
+{% extends 'publisher/base.html' %}
+{% block title %}Publisher Details{% endblock %}
 
-<h1> Here {{ publisher.publisher_name }}</h1>
+{% block body %}
+    <img src="{{ publisher.publisher_logo }}">
 
-<ul>
-     {% for author in publisher.author_set.all %}
-         <li><a href="{% url 'publisher:author_index' publisher.id author.id %} ">{{ author.author_name }}</a></li>
-     {% endfor %}
-</ul>
+    <h1>{{ publisher.publisher_name }}</h1>
+
+    <ul>
+         {% for author in publisher.author_set.all %}
+             <li><a href="{% url 'publisher:author_index' publisher.id author.id %} ">{{ author.author_name }}</a></li>
+         {% endfor %}
+    </ul>
+{% endblock %}

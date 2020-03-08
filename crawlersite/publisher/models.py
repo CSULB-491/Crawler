@@ -6,6 +6,7 @@ class Publisher(models.Model):
     publisher_name = models.CharField(max_length=250)
     publisher_link = models.CharField(max_length=1000)
     publisher_logo = models.CharField(max_length=1000)
+    publisher_slug = models.CharField(max_length=200, default=1)
 
     def __str__(self):
         return self.publisher_name + ' - ' + self.publisher_link
@@ -14,8 +15,9 @@ class Publisher(models.Model):
 class Author(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     author_image = models.CharField(max_length=1000)
-    article_count = models.CharField(max_length=10)   # will probably delete this file type for author. It should be on article only
+    article_count = models.CharField(max_length=10)
     author_name = models.CharField(max_length=250)
+    author_slug = models.CharField(max_length=200, default=1)
 
     def __str__(self):
         return self.author_name

@@ -22,7 +22,6 @@ def author_index(request, publisher_id, author_id):
     author = get_object_or_404(Author, pk=author_id)
     return render(request, 'publisher/author_index.html', {'publisher': publisher, 'author': author})
 
-
 """
 def author_detail(request, publisher_id, author_id, article_id):
     publisher = get_object_or_404(Publisher, pk=publisher_id)
@@ -30,3 +29,7 @@ def author_detail(request, publisher_id, author_id, article_id):
     article = get_object_or_404(article_id)
     return render(request, 'publisher/author/author_detail.html', {'article': article})
 """
+
+
+
+

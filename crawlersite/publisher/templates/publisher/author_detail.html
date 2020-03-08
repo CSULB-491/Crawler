@@ -1,11 +1,17 @@
-<img src="{{ publisher.publisher_logo }}">
+{% extends 'publisher/base.html' %}
+{% block title %}Author Details{% endblock %}
 
-<h1>{{ publisher.publisher_name }}</h1>
-<h2> {{ author.author_name }}</h2>
-<h3>Articles for {{author.author_name }}</h3>
+{% block body %}
 
-<ul>
-    {% for article in author.article.article_set.all %}
-        <li>{{ article.article_title }} - {{ article.file_type }}</li>
-    {% endfor %}
-</ul>
+    <img src="{{ publisher.publisher_logo }}">
+
+    <h1>{{ publisher.publisher_name }}</h1>
+    <h2> {{ author.author_name }}</h2>
+    <h3>Articles for {{author.author_name }}</h3>
+
+    <ul>
+        {% for article in author.article.article_set.all %}
+            <li>{{ article.article_title }} - {{ article.file_type }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

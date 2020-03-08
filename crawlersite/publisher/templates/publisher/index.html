@@ -1,12 +1,14 @@
-<!-- all this is, is a template. The frontend developer will give us a blueprint and then plug in all the info that is
- needed. -->
-{% if all_publishers %}
-    <h3>Here are all the Publishers:</h3>
+{% extends 'publisher/base.html' %}
+{% block title %}Publisher Details{% endblock %}
+
+{% block body %}
+
     <ul>
         {% for publisher in all_publishers %}
             <li><a href="{% url 'publisher:detail' publisher.id %}">{{ publisher.publisher_name }}</a></li>
         {% endfor %}
     </ul>
-{% else %}
-    <h3>There aren't any Publishers at this time</h3>
-{% endif %}
+
+{% endblock %}
+
+<!-- used this instead of publisher.pk --------- publisher.publisher_slug-------- learn how to slug -->
