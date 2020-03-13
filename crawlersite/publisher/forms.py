@@ -8,7 +8,7 @@ class PublisherForm(forms.ModelForm):
 
     class Meta:
         model = Publisher
-        fields = ['publisher_name', 'publisher_link', 'publisher_logo']
+        fields = ['publisher_name', 'publisher_link', 'publisher_logo', 'publisher_slug']
 
 
 class AuthorForm(forms.ModelForm):
