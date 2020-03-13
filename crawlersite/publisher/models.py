@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Every time django creates a publishers, it will create a unique primary key starting from 1, then 2 and so forth
@@ -7,6 +8,9 @@ class Publisher(models.Model):
     publisher_link = models.CharField(max_length=1000)
     publisher_logo = models.CharField(max_length=1000)
     publisher_slug = models.CharField(max_length=200, default=1)
+
+    def get_absolute_url(self):
+        return reverse('publisher:detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.publisher_name + ' - ' + self.publisher_link
