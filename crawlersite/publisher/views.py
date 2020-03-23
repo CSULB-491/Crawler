@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404
-
-from .forms import PublisherForm
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth import authenticate, login
+from .forms import PublisherForm, UserForm
 from .models import Publisher, Author, Article
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import View
 from django.urls import reverse_lazy
+
 
 IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']
 
@@ -82,3 +84,23 @@ def author_detail(request, publisher_id, author_id, article_id):
     article = get_object_or_404(article_id)
     return render(request, 'publisher/author/author_detail.html', {'article': article})
 """
+
+
+def registration(request):
+    form = UserForm(request.POST or None)
+    if form.is_valid():
+        user = form.save(commit=False)
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        user.set_password(password)
+        user.save()
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                all_publishers = Publisher.objects.all()
+                return render(request, 'publisher/index.html', {'all_publishers': all_publishers})
+    context = {
+        "form": form,
+    }
+    return render(request, 'publisher/registration.html', context)

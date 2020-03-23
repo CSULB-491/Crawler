@@ -15,16 +15,19 @@
             {% for publisher in all_publishers %}
                 <div class="col-sm-4 col-lg-2">
                     <div class="thumbnail">
+
+                        <!----  THIS IS THE PUBLISHER LOGO STUFF ------>
                         <a href="{% url 'publisher:detail' publisher.id %}">
-                            <img src="{{ publisher.publisher_logo }}" class="img-responsive">
+                            <img src="{{ publisher.publisher_logo.url }}" class="img-responsive">
                         </a>
+
                         <div class="caption">
                             <h2>{{ publisher.publisher_name }}</h2>
 
                             <!-- View Details -->
                             <a href="{% url 'publisher:detail' publisher.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
 
-                            <!-- Delete Album -->
+                            <!-- Delete publisher -->
                             <form action="{% url 'publisher:delete_publisher' publisher.id %}" method="post" style="display: inline;">
                                 {% csrf_token %}
                                 <input type="hidden" name="publisher_id" value="{{ publisher.id }}" />
@@ -39,7 +42,6 @@
                 {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
             {% endfor %}
         {% else %}
-            <h3>I'm here</h3>
             <div class="col-sm-12">
                 <br>
                 <a href="{% url 'publisher:create_publisher' %}">

@@ -6,7 +6,7 @@ from django.urls import reverse
 class Publisher(models.Model):
     publisher_name = models.CharField(max_length=250)
     publisher_link = models.CharField(max_length=1000)
-    publisher_logo = models.CharField(max_length=1000)
+    publisher_logo = models.FileField()
     publisher_slug = models.CharField(max_length=200, default=1)
 
     def get_absolute_url(self):
@@ -18,7 +18,7 @@ class Publisher(models.Model):
 
 class Author(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
-    author_image = models.CharField(max_length=1000)
+    author_image = models.FileField()
     article_count = models.CharField(max_length=10)
     author_name = models.CharField(max_length=250)
     author_slug = models.CharField(max_length=200, default=1)
