@@ -1,5 +1,5 @@
 beautifulsoup4==4.8.2
-Django==2.2.9
+Django==2.2.13
 feedparser==5.2.1
 psycopg2==2.6.2
 pytz==2019.3
